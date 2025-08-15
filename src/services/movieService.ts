@@ -10,15 +10,12 @@ interface MovieResponse {
   total_pages: number;
 }
 const fetchMovies = async (q: string, page: number): Promise<MovieResponse> => {
-  const response = await axios.get<MovieResponse>(
-    `${API_URL}movie?query=${q}`,
-    {
-      params: {
-        query: q,
-        page,
-      },
-    }
-  );
+  const response = await axios.get<MovieResponse>(`${API_URL}movie`, {
+    params: {
+      query: q,
+      page,
+    },
+  });
   return response.data;
 };
 export default fetchMovies;
